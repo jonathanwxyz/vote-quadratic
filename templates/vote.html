@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div class="mb-3">
+        <h5>Description: {{ description }}</h5>
+    </div>
+    <form action={{ '/' + page + '/vote' }} method="post">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Candidate</th>
+                    <th scope="col"># of votes</th>
+                    <th scope="col"># of credits</th>
+                </tr>
+            </thead>
+            <tbody id="voteTable">
+                {% for field in fields %}
+                    <tr>
+                        <td>{{ field }}</td>
+                        <td><input autocomplete="off" autofocus class="form-control form-center mb-3 field" id={{'field'+ loop.index0|string + '_votes'}} name={{'field'+ loop.index0|string + '_votes'}} placeholder="0" type="number" onchange="change(this.id)"></td>
+                        <td id={{'field'+ loop.index0|string + '_credits'}}>0</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <td colspan="2"></td>
+                <td><h5># of credits left: <span id="numCredits">{{ credits }}</span> / {{ credits }}</h5></td>
+            </tfoot>
+        </table>
+        <div><button class="btn btn-primary btn-lg" type="submit">Submit Vote</button></div>
+    </form>
+    <script src="/static/js/vote.js"></script>
+{% endblock %}

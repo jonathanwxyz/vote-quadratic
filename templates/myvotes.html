@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Link</th>
+                <th scope="col">My Votes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for election, e_data in data.items() %}
+                <tr>
+                    <td style="cursor:pointer" class="btn-link" onclick={{'location.href=' + '"/' + election + '"'}}>{{ election }}</td>
+                    <td>
+                        {% for item in e_data %}
+                            {{item[0]}}: {{item[1]}}<br>
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

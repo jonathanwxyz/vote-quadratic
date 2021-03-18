@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div class="mb-3">
+        <h3>The winner is: {% for item in winners%}{% if loop.index0 > 0 %}, {% endif %}{{ item }}{% endfor %}</h3>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Candidate</th>
+                <th scope="col"># of votes</th>
+                <th scope="col">Position</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+                <tr>
+                    <td>{{ i[0] }}</td>
+                    <td>{{ i[1] }}</td>
+                    <td>{{ loop.index0 + 1 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <td><h5># of Voters: {{ number[0]['COUNT(DISTINCT user_id)'] }}</h5></td>
+            <td colspan="2"></td>
+        </tfoot>
+    </table>
+    <div class="mb-3">
+        <h3>Share</h3>
+    </div>
+    <div><input autocomplete="off" autofocus class="form-control form-center mb-3"  value={{ link }} type="text" readonly></div>
+    <div class="mb-3">
+        <h3>Votes</h3>
+    </div>
+        <table class="table table-striped">
+        <tbody>
+            {% for user, value in vote.items() %}
+                <tr>
+                    <td>{% for vote_data in value%}
+                        {{vote_data[0]}}: {{ vote_data[1] }}<br>
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

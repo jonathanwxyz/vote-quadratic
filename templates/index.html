@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block main %}
+  <div>
+    <h2>How Does Quadradic Voting Work?</h2>
+  </div>
+
+  <div><p>Each voter get a certain number of credits which they can use to vote for the given options. each vote you allocate towards an option makes it cost n<sup>2</sup> where n is the number of votes</p>
+  <p>For example, if I'm allocated 100 credits to vote with and I decide to give 9 votes to Bob, that would cost me 81 of my 100 credits as 9<sup>2</sup> = 81. This leaves me 19 credits left I can use to vote for other candidates.</p></div>
+
+  <div>
+    <h3>Why Is This Cool?</h3>
+  </div>
+
+  <div><p>It adds a new dimenstion to traditional first past the post voting in the sense that you can account for how much you want a certain option to win the vote. If someone doesn't care as much about a certain candidate winning, they're dissincentivised from pouring all of their votes into a single option as the cost of each vote increases substantially with each additional vote. The difference between 9 votes and 10 votes is 19 credits which would allow you to allocate 4 votes to one other option and then 1 vote to three other options (or 1 to 19 candidates and everything inbetween)!</p></div>
+  
+{% endblock %}

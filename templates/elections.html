@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Link</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Fields</th>
+                    <th scope="col">Credits</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for pos in data %}
+                <tr>
+                    <td style="cursor:pointer" class="btn-link" onclick={{'location.href=' + '"/' + pos['election_id'] + '"'}}>{{ pos['election_id'] }}</td>
+                    <td>{{ pos['description'] }}</td>
+                    <td>{% for item in pos['fields'] %}
+                            <ul class="list-group" style="list-style-type: none;">
+                                <li>{{ item }}</li>
+                            </ul>
+                        {% endfor %}
+                    </td>
+                    <td>{{ pos['credits'] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+                <td colspan="4"></td>
+            </tfoot>
+        </table>
+    </div>
+{% endblock %}
